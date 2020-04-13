@@ -1,8 +1,6 @@
-class Fantasma
-  def atacar_a(otra_unidad)
-    otra_unidad.recibir_daño(ataque)
-  end
+require 'atacante'
 
+class Fantasma < Atacante
   def ataque
     20
   end
