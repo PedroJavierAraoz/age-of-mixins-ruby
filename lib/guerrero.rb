@@ -1,17 +1,29 @@
-require 'defensor'
+require 'impl_defensor'
+require 'impl_atacante'
 
-class Guerrero < Defensor
-  def initialize(fuerza:, defensa:, vida:)
-    @fuerza = fuerza
-    @defensa = defensa
-    @vida = vida
+class Guerrero
+  def initialize(defensa:, vida:, fuerza:)
+    @impl_defensor = ImplDefensor.new(defensa: defensa, vida: vida)
+    @impl_atacante = ImplAtacante.new(fuerza)
   end
 
-  def atacar_a(otra_unidad)
-    otra_unidad.recibir_daño(ataque)
+  def atacar_a(defensor)
+    @impl_atacante.atacar_a(defensor)
   end
 
   def ataque
-    @fuerza
+    @impl_atacante.ataque
+  end
+
+  def vida
+    @impl_defensor.vida
+  end
+
+  def defensa
+    @impl_defensor.defensa
+  end
+
+  def recibir_daño(cantidad_de_daño)
+    @impl_defensor.recibir_daño(cantidad_de_daño)
   end
 end
