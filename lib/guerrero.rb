@@ -2,7 +2,7 @@ class Guerrero
   attr_reader :vida
   attr_reader :defensa
 
-  def initialize(fuerza:, defensa:, vida:, coeficiente_espada: nil)
+  def initialize(fuerza:, defensa:, vida:, coeficiente_espada: 1)
     @fuerza = fuerza
     @defensa = defensa
     @vida = vida
@@ -14,15 +14,7 @@ class Guerrero
   end
 
   def ataque
-    if tiene_una_espada?
-      @fuerza * @coeficiente_espada
-    else
-      @fuerza
-    end
-  end
-
-  def tiene_una_espada?
-    !@coeficiente_espada.nil?
+    @fuerza * @coeficiente_espada
   end
 
   def recibir_daño(cantidad_de_daño)
